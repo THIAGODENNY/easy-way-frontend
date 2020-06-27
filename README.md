@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/588b8942-64d5-41db-8e95-0d2b805702d3/deploy-status)](https://app.netlify.com/sites/stupefied-bhaskara-b1e159/deploys)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
