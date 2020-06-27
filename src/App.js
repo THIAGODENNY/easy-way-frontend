@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Login from './components/Login/Login';
 import Modal from 'react-modal';
+import Patients from './components/Patients/Patients'
+import EditPatient from './components/EditPatient/EditPatient'
 
 function App() {
   const [token, setToken] = useState('');
@@ -19,17 +21,12 @@ function App() {
           isOpen={token !== ''}
         >
           <button onClick={() => setToken('')}>Logout</button>
-          <ul>
-            <li onClick={() => setEdit('Paciente 1')}>Paciente 1</li>
-            <li onClick={() => setEdit('Paciente 2')}>Paciente 2</li>
-            <li onClick={() => setEdit('Paciente 3')}>Paciente 3</li>
-          </ul>
+          <Patients patients={['Paciente 1', 'Paciente 2', 'Paciente 3']} handleSave={setEdit}/>
         </Modal>
         <Modal
           isOpen={edit !== ''}
         >
-          <h1>Editando paciente {edit}</h1>
-          <button onClick={() => setEdit('')}>Save</button>
+          <EditPatient patient={edit} handleSave={setEdit} />
         </Modal>
     </div>
   );
