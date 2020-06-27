@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ handleToken }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
 
   const getToken = (e) => {
     e.preventDefault();
@@ -15,7 +14,7 @@ const Login = () => {
     })
     .then(function (response) {
       const { token } = response.data;
-      setToken(token);
+      handleToken(token);
       console.log(response);
     })
     .catch(function (error) {
@@ -50,7 +49,6 @@ const Login = () => {
           Submit
         </Button>
       </Form>
-      {token}
     </Container>
   );
 };
