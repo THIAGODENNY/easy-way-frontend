@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 
-
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
