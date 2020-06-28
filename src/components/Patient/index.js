@@ -1,15 +1,15 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 const Patient = ({ patient, handleSave, name }) => (
-  <Card>
+  <Card className="card-patient">
     <Card.Header as="h5">10/10/20 - 12:00</Card.Header>
     <Card.Body>
-      <Card.Title>{patient}</Card.Title>
+      <Card.Title>Patient Name</Card.Title>
       <Card.Text>
         Status: Agendado
       </Card.Text>
-      <Button variant="primary" onClick={() => handleSave(name)} >Medicar</Button>
+      <button variant="primary" onClick={() => handleSave(name)} >Medicar</button>
     </Card.Body>
   </Card>
 )

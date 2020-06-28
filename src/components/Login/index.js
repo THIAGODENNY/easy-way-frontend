@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 import './index.css';
@@ -18,7 +18,6 @@ const Login = ({ handleToken }) => {
     .then(function (response) {
       const { token } = response.data;
       handleToken(token);
-      console.log(response);
     })
     .catch(function (error) {
       alert('Login Incorreto');

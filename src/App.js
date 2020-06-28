@@ -4,8 +4,6 @@ import Modal from 'react-modal';
 import Patients from './components/Patients'
 import EditPatient from './components/EditPatient'
 
-import './global.css'
-
 function App() {
   const [token, setToken] = useState('');
   const [edit, setEdit] = useState('');
@@ -17,12 +15,16 @@ function App() {
         >
           <Login handleToken={setToken}/>
         </Modal>
-        {token}    
+
         <Modal
           isOpen={token !== ''}
         >
-          <button onClick={() => setToken('')}>Logout</button>
-          <Patients patients={['Paciente 1', 'Paciente 2', 'Paciente 3']} handleSave={setEdit}/>
+          <button className="btn-logout" onClick={() => setToken('')}>Logout</button>
+          <Patients 
+          className="patients"
+          patients={['Paciente 1', 'Paciente 2', 'Paciente 3']} 
+          handleSave={setEdit}/>
+
         </Modal>
         <Modal
           isOpen={edit !== ''}
