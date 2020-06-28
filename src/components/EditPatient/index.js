@@ -1,13 +1,15 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 
+import './index.css';
+
 const EditPatient = ({ patient, handleSave }) => {
   const handleMedicar = (event) => {
     event.preventDefault();
     handleSave("");
   };
   return (
-    <Form onSubmit={handleMedicar}>
+    <Form id="teste" onSubmit={handleMedicar}>
       <Form.Group controlId="formGridAddress1">
         <Form.Label>
           <b>{patient} - Data: 10/10/10 12:00</b>
