@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
 import Login from './components/Login';
 import Modal from 'react-modal';
 import Patients from './components/Patients'
 import EditPatient from './components/EditPatient'
+
+import './global.css'
 
 function App() {
   const [token, setToken] = useState('');
