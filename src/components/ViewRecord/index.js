@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
 
-const Patient = ({ handleSave, schedule }) => {
+const ViewRecord = ({ handleSave, schedule }) => {
   const [patientInfo, setPatientInfo] = useState();
   const { patient, date, status } = schedule;
 
@@ -22,12 +22,10 @@ const Patient = ({ handleSave, schedule }) => {
         <Card.Text>
           Status: {status}
         </Card.Text>
-        <button variant="primary" onClick={() => handleSave({ patientInfo, schedule })} >Medicar</button>
+        <button variant="primary" onClick={() => handleSave({ patientInfo, schedule })} >Consultar Detalhes</button>
       </Card.Body>
     </Card>
   )
 }
 
-export default Patient;
-
-//
+export default ViewRecord;

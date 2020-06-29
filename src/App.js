@@ -1,35 +1,90 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
 import Login from './components/Login';
 import Modal from 'react-modal';
 import Patients from './components/Patients'
 import EditPatient from './components/EditPatient'
+import ViewRecordDetails from './components/ViewRecordDetails'
+import axios from 'axios';
 
 function App() {
   const [token, setToken] = useState('');
   const [edit, setEdit] = useState('');
+  const [view, setView] = useState('');
+  const [me, setMe] = useState({});
+  const [patients, setPatients] = useState([]);
+  const [route, setRoute] = useState('agendamentos');
+
+    useEffect(() => {
+    const url = 'https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/auth/jwt/me';
+    axios.get(url, {
+      headers: {
+        'x-access-token': token
+      }
+    })
+      .then(({ data }) => {
+        setMe(data);
+      });
+  }, [token]);
+
+  useEffect(() => {
+    const url = `https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/api/screcord/showSchedullingsByMedicName/${me.name}`; 
+    axios.get(url)
+      .then(({ data }) => {
+        setPatients(data.schedules);
+      });
+  }, [me]);
+
+  useEffect(() => {
+    const url = `https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/api/screcord/showSchedullingsByMedicName/${me.name}`; 
+    axios.get(url)
+      .then(({ data }) => {
+        setPatients(data.schedules);
+      });
+  }, [edit]);
 
   return (
     <div className="App">
+       {token !== '' && <Header handleRoute={setRoute} handleLogout={setToken}/>}
        <Modal
           isOpen={token === ''}
         >
           <Login handleToken={setToken}/>
         </Modal>
-
-        <Modal
-          isOpen={token !== ''}
-        >
-          <button className="btn-logout" onClick={() => setToken('')}>Logout</button>
+        {
+          token !== '' && route === 'agendamentos' && (
+            <>
+              <Patients 
+                className="patients"
+                patients={patients} 
+                handleSave={setEdit}
+                loggedUser={me}
+                status="Agendado"
+              />
+            </>
+          )
+        }
+        {
+          token !== '' && route === 'prontuarios' &&  
           <Patients 
-          className="patients"
-          patients={['Paciente 1', 'Paciente 2', 'Paciente 3']} 
-          handleSave={setEdit}/>
-
-        </Modal>
+            className="patients"
+            patients={patients} 
+            handleSave={setView}
+            loggedUser={me}
+            status="Medicado"
+          />
+        }
         <Modal
           isOpen={edit !== ''}
+          onRequestClose={() => setEdit('')}
         >
-          <EditPatient patient={edit} handleSave={setEdit} />
+          <EditPatient scheduleInfos={edit} handleSave={setEdit} />
+        </Modal>
+        <Modal
+          isOpen={view !== ''}
+          onRequestClose={() => setView('')}
+        >
+          <ViewRecordDetails scheduleInfos={view} handleSave={setView} />
         </Modal>
     </div>
   );
