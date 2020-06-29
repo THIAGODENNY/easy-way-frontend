@@ -2,8 +2,6 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from 'axios';
 
-import './index.css';
-
 const EditPatient = ({ scheduleInfos, handleSave }) => {
   const { patientInfo, schedule } = scheduleInfos;
   const handleMedicar = async (event) => {
@@ -19,8 +17,6 @@ const EditPatient = ({ scheduleInfos, handleSave }) => {
       medicNotes: notes.value,
       diagnosis: diagnosis.value,
     }
-
-    console.log(body);
 
     await axios.put(url, body);
 

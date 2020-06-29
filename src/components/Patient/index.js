@@ -6,9 +6,6 @@ const Patient = ({ handleSave, schedule }) => {
   const [patientInfo, setPatientInfo] = useState();
   const { patient, date, status, specialty} = schedule;
 
-  console.log(schedule);
-  
-
   useEffect(() => {
     const url = `https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/api/patients/${patient}`;
     axios.get(url)

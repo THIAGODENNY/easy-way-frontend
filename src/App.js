@@ -46,7 +46,7 @@ function App() {
   }, [edit, me.name]);
 
   return (
-    <div className="App">
+    <div className="App">      
        {token !== '' && <Header handleRoute={setRoute} handleLogout={setToken}/>}
        <Modal
           isOpen={token === ''}

@@ -6,7 +6,13 @@ const Patients = ({ patients, handleSave, status }) => {
   const filteredPatients = patients.filter((schedule) => schedule.status === status);
 
   if (filteredPatients.length === 0) {
-    return <h5>Não há pacientes no status de {status}</h5>
+    return <div style={{ height: '100vh',  display: 'flex', alignItems: 'center', justifyContent:'center'}}>
+      <img 
+        src={require('../../assets/search.png')} 
+        alt="" 
+        width="150"/>
+      <h5>Não encontramos pacientes com status de <strong>{status}</strong></h5>
+    </div>
   }
 
   return (
