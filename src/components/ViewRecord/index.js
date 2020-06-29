@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 const ViewRecord = ({ handleSave, schedule }) => {
@@ -15,14 +15,12 @@ const ViewRecord = ({ handleSave, schedule }) => {
   }, [patient]);
 
   return (
-    <Card className="card-patient">
+    <Card style={{ margin:'20px'}}>
       <Card.Header as="h5">{date}</Card.Header>
       <Card.Body>
-        <Card.Title>{patientInfo && patientInfo.name}</Card.Title>
-        <Card.Text>
-          Status: {status}
-        </Card.Text>
-        <button variant="primary" onClick={() => handleSave({ patientInfo, schedule })} >Consultar Detalhes</button>
+        <Card.Title style={{ fontSize: '15px'}}><strong>Nome do Paciente: </strong>{patientInfo && patientInfo.name}</Card.Title>
+        <Card.Title style={{ fontSize: '15px'}}><strong>Status: {status}</strong></Card.Title>
+        <Button variant="success" onClick={() => handleSave({ patientInfo, schedule })}>Consultar Detalhes</Button>
       </Card.Body>
     </Card>
   )
