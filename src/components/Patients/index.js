@@ -26,6 +26,8 @@ const Patients = ({ patients, handleSave, status }) => {
           handleSave={handleSave} 
         />
       }
+
+      else return null;
     })
   );
 }
