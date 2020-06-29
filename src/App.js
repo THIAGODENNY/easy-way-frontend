@@ -7,6 +7,8 @@ import EditPatient from './components/EditPatient'
 import ViewRecordDetails from './components/ViewRecordDetails'
 import axios from 'axios';
 
+import './App.css';
+
 function App() {
   const [token, setToken] = useState('');
   const [edit, setEdit] = useState('');
