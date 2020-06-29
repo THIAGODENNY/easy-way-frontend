@@ -34,25 +34,36 @@ const Login = ({ handleToken }) => {
 
   return (     
     <Container> 
-      <img src={require('../../assets/logo.png')} alt=""/>
-      <div className="content">
-      <h1>EasyWay</h1>
-      <p>Bem-vindo(a) ao EasyWay, acompanhe sua rotina direto do sistema.</p>
-      <Form onSubmit={getToken}>
+
+      <div className="easyway">
+        <img src={require('../../assets/logo.png')} alt="" width="300"/>
+        <h1>EasyWay</h1>
+        <p>Bem-vindo(a) ao EasyWay, faça o acompanhamento <br /> dos seus pacientes em tempo real.</p>
+      </div>
+
+
+      <div className="form">
+
+      <h5>Por favor, forneça suas informações para entrar no sistema</h5>
+
+      <Form onSubmit={getToken}>      
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Digite seu e-mail" onChange={handleEmail} />
+          <Form.Control type="email" placeholder="Digite seu e-mail" onChange={handleEmail}  required/>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Senha</Form.Label>
-          <Form.Control type="password" placeholder="Digite sua senha" onChange={handlePassword} />
+          <Form.Control type="password" placeholder="Digite sua senha" onChange={handlePassword} required />
         </Form.Group>
         <button type="submit">
           Entrar
         </button>
       </Form>
+
       </div>
+     
+      
     </Container>
   );
 };

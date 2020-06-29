@@ -7,7 +7,7 @@ import EditPatient from './components/EditPatient'
 import ViewRecordDetails from './components/ViewRecordDetails'
 import axios from 'axios';
 
-import './App.css';
+import './global.css'
 
 function App() {
   const [token, setToken] = useState('');
@@ -50,6 +50,22 @@ function App() {
        {token !== '' && <Header handleRoute={setRoute} handleLogout={setToken}/>}
        <Modal
           isOpen={token === ''}
+          style={
+            { overlay: { }, content: {
+              position: 'initial',
+              top: '0px',
+              left: '0px',
+              right: '0px',
+              bottom: '0px',
+              border: '0px solid',
+              background: '#fff',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '0px',
+              outline: '0',
+              padding: '0px'
+            } }
+          }
         >
           <Login handleToken={setToken}/>
         </Modal>
