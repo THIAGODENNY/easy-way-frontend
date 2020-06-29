@@ -41,7 +41,7 @@ function App() {
       .then(({ data }) => {
         setPatients(data.schedules);
       });
-  }, [edit]);
+  }, [edit, me.name]);
 
   return (
     <div className="App">
