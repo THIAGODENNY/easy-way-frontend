@@ -28,8 +28,8 @@ const Login = ({ handleToken }) => {
           'x-access-token': token
         }
       }).then(({ data }) => {
-        if(data.profile === 'medic') handleToken(token);
-        return toast.warn('Você não possui permissão para acessar!', {
+        if(data.profile === 'medic') handleToken(token); 
+        else toast.warn('Você não possui permissão para acessar!', {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 8000          
         });
