@@ -1,0 +1,11 @@
+.btn-logout {
+    height: 50px;
+    width: 200px;
+    background-color: darkolivegreen;
+    margin: 0 auto;
+}
+
+.patient {
+    margin: 10px;
+    padding: 20px;
+}
